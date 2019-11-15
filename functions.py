@@ -1,11 +1,18 @@
 from random import randrange
-def choice_money():
-    money=int(input("veuillez entrer le montant de la mise"))
-    while money <= 0:
-        print("erreur montant invalide, Veuillez resaisir votre montant de nouveau")
-        money = int(input("veuillez entrer le montant de la mise"))
-    print("vous avez choisi de miser {} euros".format(money))
+from math import ceil
 
+def choice_money():
+    money = input("veuillez entrer le montant de la mise")
+    try:
+        money=int(money)
+        while money <= 0:
+            print("erreur montant invalide, Veuillez resaisir votre montant de nouveau")
+            money = int(input("veuillez entrer le montant de la mise"))
+            print("vous avez choisi de miser {} euros".format(money))
+    except ValueError:
+        print("vous n avez saisi de chiffres")
+        money = int(input("veuillez entrer le montant de la mise"))
+        print("vous avez choisi de miser {} euros".format(money))
 
 def choice_number():
     choice_player=int(input("veuillez choisir un nombre entre 0 et 49"))
@@ -27,10 +34,19 @@ def choice_random():
     print("le choix du pc est {}".format(choice_pc))
     return choice_pc
 
+def game():
+    first_money = choice_money()
+    his_choice = choice_number()
+    my_choice = choice_random()
+    if his_choice == my_choice:
+        first_money = 3*first_money
+        print("vous qvez gqgne",first_money)
+    elif color(his_choice) == color(my_choice):
+        first_money = ceil(first_money/2)
+        print("vous recuperez la moitie de votre mise",first_money)
+    else:
+        first_money = 0
+        print("vous une mise nulle")
+    return first_money
 
-print(list(range(50)))
-choice_money()
-a=choice_number()
-b=choice_random()
-print(color(a))
-print(color(b))
+game()
