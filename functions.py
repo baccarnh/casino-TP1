@@ -53,14 +53,52 @@ def game():
     my_choice = choice_random()
     print("la couleur correspondante est ", color(my_choice))
     if his_choice == my_choice:
-        first_money = 3*first_money
-        print("vous avez gagne",first_money)
+        new_money = 3*first_money
+        print("vous avez gagne",new_money)
     elif color(his_choice) == color(my_choice):
-        first_money = ceil(first_money/2)
-        print("vous recuperez la moitie de votre mise soit {} euros".format(first_money))
+        new_money = ceil(first_money/2)
+        print("vous recuperez la moitie de votre mise soit {} euros".format(new_money))
     else:
-        first_money = 0
+        new_money = 0
         print("vous une mise nulle")
-    return first_money
+        money_again()
+
+    while new_money>0:
+        first_money=new_money
+        play_again(first_money)
+
+
+def play_again(first_money):
+    his_choice = choice_number()
+    while his_choice == False:
+        his_choice = choice_number()
+    print("la couleur correspondante est ", color(his_choice))
+    my_choice = choice_random()
+    print("la couleur correspondante est ", color(my_choice))
+    if his_choice == my_choice:
+        new_money = 3 * first_money
+        print("vous avez gagne", new_money)
+    elif color(his_choice) == color(my_choice):
+        new_money = ceil(first_money / 2)
+        print("vous recuperez la moitie de votre mise soit {} euros".format(new_money))
+    else:
+        new_money = 0
+        print("vous une mise nulle")
+        money_again()
+    while new_money>0:
+        first_money=new_money
+        play_again(first_money)
+
+def money_again():
+    answer = input("voulez vous remiser de nouveau? taper oui ou non").upper()#accept oui/non
+    tag=["OUI", "NON"]
+    while answer not in tag:#if input different =error
+        print("erreur de saisie taper oui ou non")
+        answer = input("entrer votre réponce de nouveau").upper()
+    if answer=="OUI":
+        game()
+    if answer=="NON":
+        print("Merci Aurevoir".center(50))
+
 
 game()
