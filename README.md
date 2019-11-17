@@ -26,6 +26,4 @@
 - Defining functions
 - calling a function from an other file
 - calling a function in an other function
-- I## Circonstances to write this code:
-
-  
+- import data files
