@@ -45,25 +45,25 @@ def game():
     first_money = choice_money()
     while first_money == False: #manage possible user mistakes
         first_money = choice_money()
-    while first_money>0: # replay if bet is greater than 0
+    #while first_money>0: # replay if bet is greater than 0
+    his_choice = choice_number()
+    while his_choice == False: # manage the user mistakes
         his_choice = choice_number()
-        while his_choice == False: # manage the user mistakes
-            his_choice = choice_number()
-        print("la couleur correspondante est ", color(his_choice)) #message giving the color of the number chosen by the player
-        my_choice = choice_random()
-        print("la couleur correspondante est ", color(my_choice)) #message giving the color of the number chosen by the machine
-        if his_choice == my_choice: #winer case
-            first_money = 3*first_money
-            print("vous avez gagne",first_money)
-            money_again()
-        elif color(his_choice) == color(my_choice): #same color
-            first_money = ceil(first_money/2)
-            print("vous recuperez la moitie de votre mise soit {} euros".format(first_money))
-            money_again()
-        else: #loser case
-            first_money = 0
-            print("vous une mise nulle")
-            money_again() #ask if the player want to makes new bet
+    print("la couleur correspondante est ", color(his_choice)) #message giving the color of the number chosen by the player
+    my_choice = choice_random()
+    print("la couleur correspondante est ", color(my_choice)) #message giving the color of the number chosen by the machine
+    if his_choice == my_choice: #winer case
+        first_money = 3*first_money
+        print("vous avez gagne",first_money)
+        money_again()
+    elif color(his_choice) == color(my_choice): #same color
+        first_money = ceil(first_money/2)
+        print("vous recuperez la moitie de votre mise soit {} euros".format(first_money))
+        money_again()
+    else: #loser case#
+        first_money = 0
+        print("vous une mise nulle")
+        money_again() #ask if the player want to makes new bet
 
 def money_again():
     answer = input("voulez vous remiser de nouveau? taper oui ou non").upper()#accept oui/non
