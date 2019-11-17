@@ -91,13 +91,13 @@ def play_again(first_money):
 
 def money_again():
     answer = input("voulez vous remiser de nouveau? taper oui ou non").upper()#accept oui/non
-    tag=["OUI", "NON"]
+    tag = ["OUI", "NON"]
     while answer not in tag:#if input different =error
         print("erreur de saisie taper oui ou non")
         answer = input("entrer votre réponce de nouveau").upper()
-    if answer=="OUI":
+    if answer == "OUI":
         game()
-    if answer=="NON":
+    else:
         print("Merci Aurevoir".center(50))
 
 
